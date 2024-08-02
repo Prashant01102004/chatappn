@@ -26,23 +26,25 @@ const Login = () => {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const formData = new FormData(e.target);
-    const { email, password } = Object.fromEntries(formData);
+  const formData = new FormData(e.target);
+  const { email, password } = Object.fromEntries(formData);
 
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      await fetchUserInfo(userCredential.user.uid);
-      toast.success("Logged in successfully");
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log('User Credential:', userCredential); // Log user credential
+    await fetchUserInfo(userCredential.user.uid); // Fetch user info
+    console.log('Fetching User Info for UID:', userCredential.user.uid); // Log fetching info
+    toast.success("Logged in successfully");
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleRegister = async (e) => {
     e.preventDefault();
