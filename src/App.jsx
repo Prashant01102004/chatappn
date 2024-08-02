@@ -14,7 +14,7 @@ const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
 
   // Memoize fetchUserInfo to ensure it doesn't change between renders
-  const fetchUser = useCallback(fetchUserInfo, [fetchUserInfo]);
+  // const fetchUser = useCallback(fetchUserInfo, [fetchUserInfo]);
 
   useEffect(() => {
     console.log('Setting up auth state listener');
