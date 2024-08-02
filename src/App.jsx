@@ -28,7 +28,7 @@ const App = () => {
       console.log('Cleaning up auth state listener');
       unSub();
     };
-  }, [fetchUser]);
+  }, [fetchUserInfo]);
 
   console.log('Current User:', currentUser);
   console.log('Is Loading:', isLoading);
