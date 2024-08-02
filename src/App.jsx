@@ -17,22 +17,21 @@ const App = () => {
   const fetchUser = useCallback(fetchUserInfo, [fetchUserInfo]);
 
   useEffect(() => {
-    console.log('Setting up auth state listener'); // Debugging log
+    console.log('Setting up auth state listener');
     // Listen for changes to the user's authentication state.
     const unSub = onAuthStateChanged(auth, (user) => {
-      console.log('Auth state changed:', user); // Debugging log
+      console.log('Auth state changed:', user);
       fetchUser(user ? user.uid : null);
     });
 
-    // Cleanup the listener on component unmount.
     return () => {
-      console.log('Cleaning up auth state listener'); // Debugging log
+      console.log('Cleaning up auth state listener');
       unSub();
     };
   }, [fetchUser]);
 
-  console.log('Current User:', currentUser); // Debugging log
-  console.log('Is Loading:', isLoading); // Debugging log
+  console.log('Current User:', currentUser);
+  console.log('Is Loading:', isLoading);
 
   if (isLoading) return <div className="loading">Loading...</div>;
 
