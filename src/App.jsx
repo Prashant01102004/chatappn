@@ -21,7 +21,7 @@ const App = () => {
     // Listen for changes to the user's authentication state.
     const unSub = onAuthStateChanged(auth, (user) => {
       console.log('Auth state changed:', user);
-      fetchUser(user ? user.uid : null);
+      fetchUserInfo(user ? user.uid : null);
     });
 
     return () => {
